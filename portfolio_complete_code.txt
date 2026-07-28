@@ -1,0 +1,1747 @@
+================================================================================
+                    PORTFOLIO WEBSITE - COMPLETE CODE
+                    All HTML, CSS, and JS Files
+================================================================================
+
+================================================================================
+FILE 1: index.html (Main Home Page)
+================================================================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #ffffff;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      width: 100%;
+      padding: 15px 40px;
+      background: rgba(13, 13, 13, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-sizing: border-box;
+    }
+
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #1aebe0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo .subtitle {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+
+    .nav-links-desktop {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-family: 'Outfit', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      transition: 0.5s;
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+      background: rgba(10, 230, 238, 0.1);
+      transform: translateY(-3px);
+    }
+
+    nav a.active,
+    nav a[href="#home"]:active {
+      color: #0d0d0d !important;
+      background: #1aebe0 !important;
+      box-shadow: 0 0 20px rgba(26, 235, 224, 0.6);
+      transform: translateY(0) scale(1.05);
+    }
+
+    .menu-toggle,
+    .nav-links {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #1aebe0;
+      margin: 5px 0;
+      transition: 0.3s;
+      border-radius: 3px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #1aebe0;
+      transition: 0.3s;
+      transform: translateX(-50%);
+    }
+
+    nav a.active::after,
+    nav a:hover::after {
+      width: 40%;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 40px;
+      height: 60vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("portfiloo web image.jpg");
+      background-size: cover;
+      background-position: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .hero-left h1 {
+      font-size: 55px;
+      font-weight: 800;
+      color: #0ae6ee;
+      max-width: 600px;
+      font-family: 'Outfit', sans-serif;
+      text-shadow: 0 0 15px rgba(10, 230, 238, 0.4);
+      line-height: 1.2;
+    }
+
+    .cursor {
+      color: #f3ef06;
+      font-weight: 900;
+    }
+
+    .hero-right img {
+      height: 600px;
+      object-fit: cover;
+      padding-top: 1cm;
+      padding-bottom: 1.9cm;
+      padding-left: 9cm;
+      position: relative;
+      z-index: 2;
+      animation: moveLeftRight 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes moveLeftRight {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-30px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .contact-wrapper {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      margin: 40px;
+    }
+
+    .section {
+      padding: 60px 40px;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      color: #1aebe0;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      outline: none;
+      border-color: #1aebe0;
+      box-shadow: 0 0 10px rgba(26, 235, 224, 0.3);
+    }
+
+    .contact button {
+      padding: 15px 30px;
+      background: #1aebe0;
+      color: #0d0d0d;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .contact button:hover {
+      background: #0d0d0d;
+      color: #1aebe0;
+      box-shadow: 0 0 20px rgba(26, 235, 224, 0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(13, 13, 13, 0.9);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links-desktop {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .menu-toggle:checked ~ .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 40px;
+        background: rgba(13, 13, 13, 0.95);
+        border-radius: 10px;
+        padding: 20px;
+        min-width: 200px;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links a {
+        color: rgba(255, 255, 255, 0.8);
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 40px 20px;
+      }
+
+      .hero-left h1 {
+        font-size: 35px;
+      }
+
+      .hero-right img {
+        height: 400px;
+        padding: 0;
+        margin-top: 30px;
+      }
+
+      nav {
+        padding: 15px 25px;
+        justify-content: space-between;
+        background: rgba(13, 13, 13, 0.95);
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        padding: 15px 20px;
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        border: none;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .nav-links a:hover {
+        background: rgba(26, 235, 224, 0.1);
+        color: #1aebe0 !important;
+        padding-left: 25px;
+      }
+
+      .nav-links a.active {
+        background: #1aebe0 !important;
+        color: #0d0d0d !important;
+        font-weight: 700;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-left h1 {
+        font-size: 38px;
+        margin-top: 0;
+        margin-bottom: 30px;
+      }
+
+      nav {
+        padding: 15px 15px;
+      }
+
+      nav {
+        gap: 5px;
+      }
+
+      nav a {
+        font-size: 10px;
+        padding: 7px 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .contact {
+        padding: 30px 15px;
+      }
+
+      .contact-wrapper {
+        padding-top: 30px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-links-desktop">
+      <a href="#home" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="project.html">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="logo">
+      Arman
+      <span class="subtitle">Web Developer</span>
+    </div>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="project.html">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <h1>
+        <span id="typed-text"></span><span class="cursor">|</span>
+      </h1>
+    </div>
+
+    <div class="hero-right">
+      <img src="my own pic.png" alt="My Picture">
+    </div>
+  </section>
+  <hr>
+
+  <div class="contact-wrapper">
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+      <h2>Contact Me</h2>
+
+      <form action="https://formspree.io/f/xgvqyeon" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Enter your Own Email" required>
+
+        <textarea name="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      © 2025 My Portfolio — All Rights Reserved
+    </footer>
+  </div>
+
+  <script>
+    const texts = [
+      "Hello, I'm Arman",
+      "Forntend Web Developer",
+      "Full-Stack Web Architect",
+      "React.js Development Specialist",
+      "Node.js & Backend Expert",
+      "Professional Django Developer",
+      "Creative AI Digital Artist",
+      "I can create the best website for your needs"
+    ];
+
+    let currentText = 0;
+    let charIndex = 0;
+    const typedText = document.getElementById("typed-text");
+
+    function type() {
+      if (charIndex < texts[currentText].length) {
+        typedText.textContent += texts[currentText].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 90);
+      } else {
+        setTimeout(deleteText, 1500);
+      }
+    }
+
+    function deleteText() {
+      if (charIndex > 0) {
+        typedText.textContent = texts[currentText].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(deleteText, 50);
+      } else {
+        currentText = (currentText + 1) % texts.length;
+        setTimeout(type, 90);
+      }
+    }
+
+    type();
+  </script>
+
+</body>
+
+</html>
+
+================================================================================
+FILE 2: about.html (About Page)
+================================================================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <link rel="stylesheet" href="about.css">
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="project.html">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <div class="section">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="222222222.png" alt="My Picture">
+      </div>
+      <div class="about-text">
+        <h1>About Me</h1>
+        <p>Hello! I'm <span class="highlight">Arman</span>, a results-driven <span class="highlight">Full-Stack
+            Web Developer</span> and Creative Digital Artist dedicated to turning bold ideas into digital reality.</p>
+
+        <p>With expertise in <span class="highlight">React.js, Node.js, and Django</span>, I build high-performance,
+          responsive web applications that provide seamless user experiences. Beyond the code, I am a specialist in
+          <span class="highlight">AI Content Creation</span>, crafting stunning visuals and viral-ready video content
+          that commands attention.
+        </p>
+
+        <p>As a professional freelancer on <span class="highlight">Fiverr</span>, my goal is to provide elite-level
+          service to clients worldwide. Whether you need a robust technical backend or a creative social media strategy,
+          I deliver quality, innovation, and precision in every project. Let's collaborate and build something
+          extraordinary together.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 My Portfolio — All Rights Reserved
+  </footer>
+
+</body>
+
+</html>
+
+================================================================================
+FILE 3: about.css (About Page Styles)
+================================================================================
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    background: #0d0d0d url('portfiloo web image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Left-side navigation */
+nav {
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 12px 25px;
+    margin: 5px 15px;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: 0.5s;
+}
+
+nav a:hover::before {
+    left: 100%;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background: rgba(0, 255, 234, 0.1);
+    transform: translateX(10px);
+}
+
+nav a.active {
+    background-color: #00ffea;
+    color: #0d0d0d;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(0, 255, 234, 0.6);
+}
+
+/* Main content wrapper */
+.section {
+    margin-left: 220px;
+    padding: 50px 30px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+.about-image {
+    flex: 0 0 350px;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #00ffea;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.about-text p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #00ffea;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-left: 220px;
+    margin-top: 50px;
+}
+
+/* Responsive */
+@media(max-width: 1024px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-direction: row;
+        justify-content: center;
+        padding: 5px;
+        flex-wrap: wrap;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.95);
+    }
+
+    nav a {
+        font-size: 0.9em;
+        padding: 10px 15px;
+        margin: 0;
+    }
+
+    .section,
+    footer {
+        margin-left: 0;
+        padding: 100px 15px 30px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .about-image {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .about-text h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media(max-width: 430px) {
+    nav a {
+        font-size: 0.8em;
+        padding: 8px 10px;
+    }
+
+    .about-text h1 {
+        font-size: 1.8em;
+    }
+
+    .about-text p {
+        font-size: 1em;
+    }
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+    animation: moveRight 4s ease-in-out infinite alternate;
+}
+
+@keyframes moveRight {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 20px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+================================================================================
+FILE 4: home.css (Home Page Styles)
+================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    background: #0d0d0d url('portfiloo web image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+nav {
+    width: 100%;
+    padding: 15px 50px;
+    background: rgba(13, 13, 13, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+}
+
+nav a:hover {
+    color: #0f1011;
+    background-color: #0ae6ee;
+    box-shadow: 0 0 15px #0ae6ee;
+    border-radius: 6px;
+    transform: translateY(-2px);
+}
+
+nav a:active,
+nav a.active {
+    background-color: #f3ef06;
+    color: #121312;
+    box-shadow: 0 0 15px #f3ef06;
+    font-weight: bold;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 10%;
+    min-height: 85vh;
+    background: transparent;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-left {
+    flex: 1;
+}
+
+.hero-left h1 {
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 800;
+    color: #ffffff;
+    max-width: 700px;
+    font-family: 'Outfit', sans-serif;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.cursor {
+    color: #0ae6ee;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-right img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 30px;
+    transition: transform 0.5s ease;
+}
+
+.hero-right img:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .hero-right img {
+        margin-top: 30px;
+        max-width: 300px;
+        height: auto;
+        border-radius: 20px;
+    }
+}
+
+.section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+    animation: fadeIn 1.5s ease-in-out;
+    color: #80ceeb;
+    border-radius: 5cm;
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    border-left: 5px solid #922121;
+    padding-left: 10px;
+    border-radius: 2cm;
+}
+
+.skills-list span {
+    display: inline-block;
+    background: #1f1f1f;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 5px;
+    font-size: 16px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.skills-list span:hover {
+    transform: scale(1.1);
+    background: #2d2d2d;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px #222;
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.contact input,
+.contact textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background: #1a1a1a;
+    color: white;
+}
+
+.contact button {
+    padding: 12px 20px;
+    background: #ffffff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact button:hover {
+    background: #dcdcdc;
+}
+
+.social-icons img {
+    width: 35px;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(13, 13, 13, 0.9);
+    margin-top: 60px;
+    color: #777;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+================================================================================
+FILE 5: skills.html (Skills Page)
+================================================================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Skills</title>
+  <link rel="stylesheet" href="skills.css">
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html" class="active">Skills</a>
+    <a href="project.html">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <div class="main">
+    <h1 id="my">My Skills</h1>
+
+    <div class="skill">
+      <div class="skill-name">HTML</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="100%">100%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">CSS</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="100%">100%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="100%">100%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">React.js</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="90%">90%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">Node.js</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="95%">95%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">Django</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="95%">95%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">MongoDB</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="100%">100%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">AI Video And Images Creation</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="95%">95%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">YouTube Channel Management</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="90%">90%</div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-name">Product Poster / LOGO Design</div>
+      <div class="skill-bar">
+        <div class="skill-bar-fill" data-percentage="95%">95%</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 My Portfolio — All Rights Reserved
+  </footer>
+
+  <script>
+    // Animate skill bars when page loads
+    window.addEventListener('load', () => {
+      const bars = document.querySelectorAll('.skill-bar-fill');
+      bars.forEach(bar => {
+        const percentage = bar.getAttribute('data-percentage');
+        bar.style.width = percentage;
+      });
+    });
+  </script>
+
+</body>
+
+</html>
+
+================================================================================
+FILE 6: skills.css (Skills Page Styles)
+================================================================================
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    background: url("skill .jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    font-size: large;
+}
+
+/* --- Sidebar Navigation --- */
+nav {
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 0;
+    justify-content: flex-start;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 12px 25px;
+    margin: 5px 15px;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: 0.5s;
+}
+
+nav a:hover::before {
+    left: 100%;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background: rgba(10, 230, 238, 0.1);
+    transform: translateX(10px);
+}
+
+nav a.active {
+    background-color: #0ae6ee;
+    color: #0d0d0d;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(10, 230, 238, 0.6);
+}
+
+/* --- Content Adjustment for Sidebar --- */
+.main {
+    margin-left: 220px;
+    padding: 50px 30px;
+    background: rgba(0, 0, 0, 0.6);
+    min-height: 100vh;
+    max-width: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px #000;
+    color: #0ae6ee;
+}
+
+.skill {
+    margin: 20px 0;
+}
+
+.skill-name {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.skill-bar {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-bar-fill {
+    height: 25px;
+    width: 0;
+    background: linear-gradient(90deg, #0ae6ee, #f3ef06);
+    text-align: right;
+    padding-right: 10px;
+    line-height: 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    color: #000;
+    transition: width 2s ease-in-out;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 50px;
+    margin-left: 220px;
+    color: #b0b0b0;
+}
+
+/* Responsive for mobile */
+@media (max-width: 1024px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-direction: row;
+        padding: 5px;
+        justify-content: center;
+        flex-wrap: wrap;
+        z-index: 1000;
+        border-right: none;
+        background: rgba(0, 0, 0, 0.95);
+    }
+
+    nav a {
+        font-size: 0.9em;
+        padding: 10px 15px;
+        margin: 0;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 100px 15px 30px;
+    }
+
+    footer {
+        margin-left: 0;
+    }
+
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 430px) {
+    nav a {
+        font-size: 0.8em;
+        padding: 8px 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .skill-name {
+        font-size: 1em;
+    }
+}
+
+#my {
+    padding-top: 0;
+}
+
+================================================================================
+FILE 7: project.html (Projects Page)
+================================================================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('project background pic.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    /* Navigation */
+    nav {
+      width: 220px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      padding-top: 50px;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      padding: 15px 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #00ffea;
+      color: #000;
+      border-radius: 10px;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 220px;
+      padding: 50px 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin-bottom: 50px;
+      color: #00ffea;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    /* Project Card */
+    .project-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 255, 234, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(0, 255, 234, 0.7);
+    }
+
+    .project-card img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 200px;
+    }
+
+    .project-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .project-info h3 {
+      color: #00ffea;
+      margin-bottom: 10px;
+    }
+
+    .project-info p {
+      color: #fff;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+
+    /* Buttons inside project card */
+    .project-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .project-buttons a {
+      text-decoration: none;
+      color: #000;
+      background-color: #00ffea;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    .project-buttons a:hover {
+      background-color: #d9f104;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      margin-top: 50px;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px;
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="project.html" class="active">Projects</a>
+    <a href="index.html">Contact</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>My Projects</h1>
+
+    <div class="projects-grid">
+
+      <!-- 1. Car Showroom Website -->
+      <div class="project-card">
+        <img src="car web [ic.png" alt="Portfolio Website">
+        <div class="project-info">
+          <h3>Website Developer | Car Showroom</h3>
+          <p>Dark theme Car Showroom built using HTML, CSS, JS.</p>
+          <p>Best Performance Developer</p>
+          <div class="project-buttons">
+            <a href="https://1111996-stack.github.io/car_website/" target="_blank">View Live</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. YouTube Project -->
+      <div class="project-card">
+        <img src="chanal.jpeg" alt="YouTube Content Setup">
+        <div class="project-info">
+          <h3>YouTube Content Setup</h3>
+          <p>SEO Titles, Thumbnails & Viral Strategy.</p>
+          <p>Channel Growth Expert</p>
+          <div class="project-buttons">
+            <a href="https://www.youtube.com/@ArmanDigital" target="_blank">View Channel</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Admin Panel -->
+      <div class="project-card">
+        <img src="admin image.png" alt="Admin Panel">
+        <div class="project-info">
+          <h3>password: admin123 | username: admin</h3>
+          <p>Secure admin dashboard with username & password authentication.</p>
+          <p>Admin can login to manage users, view data, add, update and delete records.</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/Admin-panal-project/login.html" target="_blank">View Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Django User Panel -->
+      <div class="project-card">
+        <img src="user.png" alt="Django User Panel">
+        <div class="project-info">
+          <h3>Django User Panel Dashboard</h3>
+          <p>User friendly dashboard that opens directly without admin login.</p>
+          <p>Users can view content, update profile and interact with system.</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/Admin-panal-project/index.html" target="_blank">View  Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Node.js Backend Project -->
+      <div class="project-card">
+        <img src="node.js.png" alt="Node.js Backend Project" class="project-img">
+        <div class="project-info">
+          <h3>Node.js Backend – Todo App</h3>
+          <p>CRUD API backend project using Node.js + Express. Local demo recorded.</p>
+          <div class="project-buttons">
+            <a href="https://github.com/armanjan423/Node.js_project" target="_blank">💻 View Source Code</a>
+            <a href="node.js.video.mp4" target="_blank">🎬 Demo Video</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Login Signup UI Design -->
+      <div class="project-card">
+        <img src="my frontend desgin.png" alt="Login Signup UI Design">
+        <div class="project-info">
+          <h3>Responsive Login & Signup UI – Blueflame</h3>
+          <p>
+            A modern and fully responsive login & signup interface built with
+            pure HTML, CSS, and JavaScript. Includes animated sliding panels
+            for desktop and clean mobile card layout for smartphones.
+          </p>
+          <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/frontend_design/" target="_blank">View Live</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. React.js Digital Agency -->
+      <div class="project-card">
+        <img src="react.js.png" alt="Arman Digital Agency- built with React.js">
+        <div class="project-info">
+          <h3>Arman Digital Agency - built with React.js</h3>
+          <p>Modern Digital Marketing Agency landing page built with React.js.</p>
+          <p>Includes hero section, services, testimonials and contact form. Fully responsive and professional design.</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/my-rect.js_project/" target="_blank">View Demo</a>
+            <a href="https://github.com/armanjan423/my-rect.js_project" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Elite Shoes E-commerce -->
+      <div class="project-card">
+        <img src="piccccccccasassa.png" alt="Elite Shoes E-commerce Website built with React.js">
+        <div class="project-info">
+          <h3>Elite Shoes – E-commerce Website (React.js)</h3>
+          <p>
+            A modern and responsive shoes e-commerce website built with React.js,
+            designed to deliver a smooth and engaging online shopping experience.
+          </p>
+          <p>
+            Features an eye-catching hero section, featured product collections,
+            clean UI layout and fast performance. Fully optimized for all devices.
+          </p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/e-comrace-website/" target="_blank">View Demo</a>
+            <a href="https://github.com/armanjan423/e-comrace-website" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. AI Smart Attendance System -->
+      <div class="project-card">
+        <img src="login_bg.png" alt="AI Smart Attendance System">
+        <div class="project-info">
+          <h3>AI Smart Attendance System</h3>
+          <p>
+            An AI-powered attendance system that uses facial recognition to
+            automatically mark student attendance without manual work.
+          </p>
+          <p>
+            The system allows student face registration, real-time face detection,
+            and generates daily attendance records with date and time.
+          </p>
+          <p><strong>Technologies:</strong> Python, OpenCV, Face Recognition, Flask, HTML, CSS, JavaScript</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/hello/" target="_blank">
+              View Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- end of projects-grid -->
+
+  </div> <!-- end of main -->
+
+  <!-- Footer -->
+  <footer>
+    © 2025 My Portfolio — All Rights Reserved
+  </footer>
+
+</body>
+
+</html>
+
+================================================================================
+FILE 8: all_ai_images.html (AI Images Gallery)
+================================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Images Creation</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #00ffea;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px #00ffea;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00ffea;
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 25px #00ffea;
+    }
+
+    .video-box {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    video {
+      width: 90%;
+      max-width: 700px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ffea;
+    }
+
+    a.back {
+      display: block;
+      margin: 40px auto;
+      width: 200px;
+      text-align: center;
+      padding: 12px 20px;
+      background: #00ffea;
+      color: #000;
+      font-size: 1.2em;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+
+    a.back:hover {
+      background: #d9f104;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AI Images Creation Gallery</h1>
+
+  <!-- 6 AI IMAGES -->
+  <div class="gallery">
+    <img src="Lucid_Origin_A_young_Baloch_boy_standing_in_the_rugged_mountai_1.jpg" alt="">
+    <img src="11111.jpg" alt="">
+    <img src="eggle.jpg" alt="">
+    <img src="22222.jpg" alt="">
+    <img src="Lucid_Origin_exquisite_high_fashion_photography_of_A_white_cat_2.jpg" alt="">
+    <img src="33333.jpg" alt="">
+    <img src="1.jpg" alt="">
+    <img src="2.jpg" alt="">
+    <img src="3.jpg" alt="">
+    <img src="4.jpg" alt="">
+    <img src="5.png" alt="">
+    <img src="6.jpg" alt="">
+    <img src="7.jpg" alt="">
+    <img src="8.jpg" alt="">
+  </div>
+
+  <!-- 1 Video -->
+  <div class="video-box">
+    <h2 style="text-shadow:0 0 10px #00ffea;">AI Video Creation</h2>
+    <video controls>
+      <source src="WhatsApp Video 2025-11-22 at 1.24.28 PM.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Back Button -->
+  <a href="project.html" class="back">⬅ Back to Projects</a>
+
+</body>
+</html>
+
+================================================================================
+END OF COMPLETE PORTFOLIO CODE
+================================================================================
+
+File Structure Summary:
+- index.html (Main page with embedded CSS and JS for typing animation)
+- about.html (About page)
+- about.css (Styles for about page)
+- home.css (Additional styles for home page)
+- skills.html (Skills page with animated progress bars)
+- skills.css (Styles for skills page)
+- project.html (Projects page with embedded CSS)
+- all_ai_images.html (AI images gallery page with embedded CSS)
+
+Images and assets used:
+- portfiloo web image.jpg (background)
+- my own pic.png (profile picture)
+- 222222222.png (about page image)
+- skill .jpg (skills page background)
+- project background pic.jpg (projects page background)
+- Various project screenshots and AI-generated images

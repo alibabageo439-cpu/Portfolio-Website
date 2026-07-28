@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="project.css">
+</head>
+
+<body>
+
+  <!-- FIX: same top nav + hamburger as Home/About/Skills pages, replacing the old sidebar nav -->
+  <nav>
+    <div class="nav-links-desktop">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="project.html" class="active">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+
+    <div class="logo">
+      Arman
+      <span class="subtitle">Full-Stack & Android App Developer</span>
+    </div>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="project.html" class="active">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>My Projects</h1>
+
+    <div class="projects-grid">
+
+      <!-- 1. Sangat - Audio Recording App -->
+      <div class="project-card">
+        <img src="sangat.jpg" alt="Sangat - Audio Recording App">
+        <hr>
+        <div class="project-info">
+          <h3>Sangat - Audio Recording App</h3>
+          <p>
+            An Android application for audio recording with foreground service and auto-start functionality.
+          </p>
+          <p>
+            Features audio recording with customizable settings, foreground service for background operation, auto-start on boot, battery optimization requests, modern UI built with Jetpack Compose and Material3, voice change effects, and easy permission management.
+          </p>
+          <p><strong>Technologies:</strong> Kotlin, Jetpack Compose, Material3, Android SDK, Gradle with Kotlin DSL, Coroutines</p>
+          <div class="project-buttons">
+            <a href="https://github.com/1111996-stack/Sangat-Android-app" target="_blank">See Code</a>
+            <a href="https://drive.google.com/file/d/1Xpv5siPBmfkB7hdaoX7Wca2UGGrKdeKI/view?usp=sharing" target="_blank">See Digram</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. SecurityApp - Remote Device Monitoring -->
+      <div class="project-card">
+        <img src="portfilei.jpg" alt="SecurityApp - Remote Device Monitoring">
+        <hr>
+        <div class="project-info">
+          <h3>SecurityApp - Remote Device Monitoring</h3>
+          <p>
+            An Android application for remote device monitoring with WebRTC video/audio streaming and Firebase Realtime Database signaling.
+          </p>
+          <p>
+            Features WebRTC video/audio streaming, front/back camera switching, Firebase signaling, ntfy.sh notifications, WakeLock for background operation, auto-start on boot, WorkManager keep-alive, stealth notification mode, and network listener for auto-reconnect.
+          </p>
+          <p><strong>Technologies:</strong> Kotlin, WebRTC (stream-webrtc-android), Firebase Realtime Database, Android SDK, Jetpack Compose, WorkManager, Kotlin Coroutines, ntfy.sh</p>
+          <div class="project-buttons">
+            <a href="https://github.com/1111996-stack/Remote-Camera-Monitor.git" target="_blank">See Code</a>
+            <a href="https://drive.google.com/file/d/1plB1j6emfaGUozUDbFpTpMtfRgR8qmoX/view?usp=drive_link" target="_blank">See Digram</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Remote Gallery Viewer -->
+      <div class="project-card">
+        <img src="gallry pic.jpg" alt="Remote Gallery Viewer">
+        <hr>
+        <div class="project-info">
+          <h3>Remote Gallery Viewer App</h3>
+          <p>
+            A secure remote file access system allowing admins to browse and download images/videos from Android devices in real-time using WebRTC P2P technology.
+          </p>
+          <p>
+            Features real-time P2P transfer, Firebase signaling, Cloudinary CDN fallback, background service persistence, network monitoring, and paginated gallery.
+          </p>
+          <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Firebase Realtime Database, Kotlin, WebRTC DataChannel, Android SDK, Coroutines, WorkManager, Cloudinary CDN</p>
+          <div class="project-buttons">
+            <a href="https://github.com/1111996-stack/remote-gallery-viewer" target="_blank">See Code</a>
+            <a href="https://drive.google.com/file/d/1PVwkbDaXiLV8wzmYByyBlRozcDOIlenI/view?usp=sharing" target="_blank">See Diagram</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Car Showroom Website -->
+      <div class="project-card">
+        <!-- NOTE: verify this filename — "car web [ic.png" looks like a typo (maybe "car web pic.png"). Rename the actual file to match exactly, avoid spaces/brackets. -->
+        <img src="car web [ic.png" alt="Portfolio Website">
+        <hr>
+        <div class="project-info">
+          <h3>Website Developer | Car Showroom</h3>
+          <p>Dark theme Car Showroom built using HTML, CSS, JS.</p>
+          <p>Best Performance Developer</p>
+          <div class="project-buttons">
+            <a href="https://1111996-stack.github.io/car_website/" target="_blank">View Live</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 5. Login Signup UI Design -->
+      <div class="project-card">
+        <img src="my frontend desgin.png" alt="Login Signup UI Design">
+        <hr>
+        <div class="project-info">
+          <h3>Responsive Login & Signup UI – Blueflame</h3>
+          <p>
+            A modern and fully responsive login & signup interface built with
+            pure HTML, CSS, and JavaScript. Includes animated sliding panels
+            for desktop and clean mobile card layout for smartphones.
+          </p>
+          <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/frontend_design/" target="_blank">View Live</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. React.js Digital Agency -->
+      <div class="project-card">
+        <img src="react.js.png" alt="Arman Digital Agency- built with React.js">
+        <hr>
+        <div class="project-info">
+          <h3>Arman Digital Agency - built with React.js</h3>
+          <p>Modern Digital Marketing Agency landing page built with React.js.</p>
+          <p>Includes hero section, services, testimonials and contact form. Fully responsive and professional design.</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/my-rect.js_project/" target="_blank">View Demo</a>
+            <a href="https://github.com/armanjan423/my-rect.js_project" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Elite Shoes E-commerce -->
+      <div class="project-card">
+        <img src="piccccccccasassa.png" alt="Elite Shoes E-commerce Website built with React.js">
+        <hr>
+        <div class="project-info">
+          <h3>Elite Shoes – E-commerce Website (React.js)</h3>
+          <p>
+            A modern and responsive shoes e-commerce website built with React.js,
+            designed to deliver a smooth and engaging online shopping experience.
+          </p>
+          <p>
+            Features an eye-catching hero section, featured product collections,
+            clean UI layout and fast performance. Fully optimized for all devices.
+          </p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/e-comrace-website/" target="_blank">View Demo</a>
+            <a href="https://github.com/armanjan423/e-comrace-website" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. AI Smart Attendance System -->
+      <div class="project-card">
+        <img src="login_bg.png" alt="AI Smart Attendance System">
+        <hr>
+        <div class="project-info">
+          <h3>AI Smart Attendance System</h3>
+          <p>
+            An AI-powered attendance system that uses facial recognition to
+            automatically mark student attendance without manual work.
+          </p>
+          <p>
+            The system allows student face registration, real-time face detection,
+            and generates daily attendance records with date and time.
+          </p>
+          <p><strong>Technologies:</strong> Python, OpenCV, Face Recognition, Flask, HTML, CSS, JavaScript</p>
+          <div class="project-buttons">
+            <a href="https://armanjan423.github.io/hello/" target="_blank">
+              View Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- end of projects-grid -->
+
+  </div> <!-- end of main -->
+
+  <!-- Footer -->
+  <footer>
+    © 2025 My Portfolio — All Rights Reserved
+  </footer>
+
+</body>
+
+</html>
