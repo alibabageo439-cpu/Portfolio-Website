@@ -180,6 +180,26 @@ nav a:hover::after {
   text-shadow: 0 0 15px rgba(10, 230, 238, 0.4);
 }
 
+@media (max-width: 768px) {
+  .hero-left h1 .intro {
+    font-size: 32px;
+  }
+
+  #typed-text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-left h1 .intro {
+    font-size: 28px;
+  }
+
+  #typed-text {
+    font-size: 20px;
+  }
+}
+
 .cursor {
   color: #1aebe0;
   font-weight: 900;
@@ -339,7 +359,7 @@ footer {
 
   .hero-left h1 {
     width: 100%;
-    font-size: 30px;
+    font-size: 24px;
     margin: 0 auto;
     min-height: 1.4em;
   }
@@ -444,7 +464,7 @@ footer {
 
 @media (max-width: 480px) {
   .hero-left h1 {
-    font-size: 26px;
+    font-size: 20px;
     margin-top: 0;
     margin-bottom: 10px;
     line-height: 1.3;
